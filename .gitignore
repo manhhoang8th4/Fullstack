@@ -9,4 +9,5 @@ backend/node_modules
 frontend/.env
 backend/.env
 
+/frontend
 .DS_Store
