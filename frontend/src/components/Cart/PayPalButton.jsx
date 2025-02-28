@@ -8,7 +8,7 @@ const PayPalButton = ({amount, onSuccess, onError}) => {
      import.meta.env.VITE_PAYPAL_CLIENT_ID,
      }}
      >
-     
+
      <PayPalButtons style={{layout:"vertical"}}
      createOrder={(data, actions) => {
        return actions.order.create({
@@ -18,7 +18,7 @@ const PayPalButton = ({amount, onSuccess, onError}) => {
      onApprove={(data,actions) => {
        return actions.order.capture().then(onSuccess)
      }}
-     onError={onError} 
+     onError={onError}
      />
    </PayPalScriptProvider>
   )
