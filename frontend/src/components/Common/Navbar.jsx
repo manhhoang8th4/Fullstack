@@ -14,7 +14,7 @@ const Navbar = () => {
     const [navDrawerOpen, setNavDrawerOpen] = useState(false);
 
     const toggleCartDrawer = () => {
-        setDrawerOpen(!navDrawerOpen);
+        setDrawerOpen(!drawerOpen);
     }
 
     const toggleNavDrawer = () => {
@@ -48,10 +48,11 @@ const Navbar = () => {
         </div>
         {/* Right - Icons */}
         <div className="flex item-center space-x-4">
+            <Link to="/admin" className='block bg-black px-2 rounded text-sm text-white'>Admin</Link>
             <Link to="/profile" className='hover:text-black'>
                 <HiOutlineUser className='h-6 w-6 text-gray-700' />
             </Link>
-            <button onClick={toggleNavDrawer} className='relative hover:text-black'>
+            <button onClick={toggleCartDrawer} className='relative hover:text-black'>
                 <HiOutlineShoppingBag className='h-6 w-6 text-gray-700' />
                 <span className='absolute -top-2 -right-2 bg-red-500 text-white rounded-full text-xs px-1'>2</span>
             </button>
@@ -59,7 +60,7 @@ const Navbar = () => {
             <div className="overflow-hidden">
                 <SearchBar />
             </div>
-            <button onClick={toggleNavDrawer} className='md:hidden'>
+            <button onClick={toggleCartDrawer} className='md:hidden'>
                 <HiBars3BottomRight className='h-6 w-6 text-gray-700' />
             </button>
         </div>
