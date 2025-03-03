@@ -55,8 +55,8 @@ const FilterSidebar = () => {
             gender:params.gender || "",
             color:params.color || "",
             size:params.size ? params.size.split(","): [],
-            material:params.size ? params.size.split(","): [],
-            brand:params.size ? params.size.split(","): [],
+            material:params.material ? params.material.split(","): [],
+            brand:params.brand ? params.brand.split(","): [],
             minPrice:params.minPrice || 0,
             maxPrice: params.maxPrice || 100,
         });
@@ -71,10 +71,10 @@ const FilterSidebar = () => {
             if(checked) {
                 newFilters[name] = [...(newFilters[name] || []), value];
             } else{
-                newFilters[name] = newFilters[name].filters((item) => item !== value)
+                newFilters[name] = newFilters[name].filter((item) => item !== value)
             }
         } else{
-            newFilters[name] = value
+            newFilters[name] = value;
         }
         setFilters[newFilters]
         updateURLParams(newFilters)
