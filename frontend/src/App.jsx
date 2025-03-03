@@ -9,11 +9,11 @@ import CollectionPage from "./pages/CollectionPage";
 import ProductDetails from "./components/Products/ProductDetails";
 import Checkout from "./components/Cart/Checkout";
 import OrderConfirmationPage from "./pages/OrderConfirmationPage";
-import OrderDetailsPage from "./pages/OrderDetailsPage";
-import MyOrdersPage from "./pages/MyOrdersPage";
-import AdminLayout from "./components/Admin/AdminLayout";
 
-import UserManagement from "./components/Admin/UserManagement";
+import MyOrdersPage from "./pages/MyOrdersPage";
+// import AdminLayout from "./components/Admin/AdminLayout";
+
+// import UserManagement from "./components/Admin/UserManagement";
 const App = () => {
   return (
     <BrowserRouter
@@ -35,12 +35,12 @@ const App = () => {
             path="order-confirmation"
             element={<OrderConfirmationPage />}
           />
-          <Route path="order/:id" element={<OrderDetailsPage />} />
+          
           <Route path="my-orders" element={<MyOrdersPage />} />
         </Route>
-        <Route path="/admin" element={<AdminLayout />}>
+        {/* <Route path="/admin" element={<AdminLayout />}>
           <Route path="users" element={<UserManagement />} />
-        </Route>
+        </Route> */}
       </Routes>
     </BrowserRouter>
   );
