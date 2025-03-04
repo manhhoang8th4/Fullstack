@@ -13,15 +13,14 @@ const Navbar = () => {
     const [drawerOpen, setDrawerOpen] = useState(false);
     const [navDrawerOpen, setNavDrawerOpen] = useState(false);
 
-    const toggleCartDrawer = () => {
-        setDrawerOpen(!drawerOpen);
-    }
-
     const toggleNavDrawer = () => {
         setNavDrawerOpen(!navDrawerOpen);
     }
 
 
+    const toggleCartDrawer = () => {
+        setDrawerOpen(!drawerOpen);
+    }
   return (
     <div>
       <nav className='container mx-auto flex items-center justify-between py-4 px-6'>
@@ -60,7 +59,7 @@ const Navbar = () => {
             <div className="overflow-hidden">
                 <SearchBar />
             </div>
-            <button onClick={toggleCartDrawer} className='md:hidden'>
+            <button onClick={toggleNavDrawer} className='md:hidden'>
                 <HiBars3BottomRight className='h-6 w-6 text-gray-700' />
             </button>
         </div>

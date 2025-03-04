@@ -26,7 +26,10 @@ const CartContents = () => {
   return (
     <div>
       {cartProducts.map((product, index) => (
-        <div key={index} className="flex items-start justify-between py-4 border-b">
+        <div 
+            key={index}
+            className="flex items-start justify-between py-4 border-b"
+        >
             <div className="flex items-start">
                 <img 
                 src={product.image}
@@ -49,7 +52,7 @@ const CartContents = () => {
                   </div>
             </div>
             <div>
-                <p>${product.price.toLocaleString()}</p>
+                <p className='font-medium'>${product.price.toLocaleString()}</p>
                 <button>
                     <RiDeleteBin3Line className='h-6 w-6 mt-2 text-red-600'/>
                 </button>
