@@ -9,7 +9,14 @@ const ProductManagement = () => {
             price:110,
             sku:"123123123",
         }
-    ]
+    ];
+
+    const handleDeleteProduct = (id) => {
+        // tao ham de xoa san pham
+        if(window,confirm("Are you sure you want to delete this product?")) {
+            console.log("Delete product with id", id);
+        }
+    }
   return (
     <div className='max-2-7xl'>
         <h2 className="text-2xl font-bold mb-6">Product Management</h2>
@@ -40,14 +47,20 @@ const ProductManagement = () => {
                                 >
                                     Edit
                                 </Link>
-                                <button onClick={() => handleDeleteProduct(product._id)}>
+                                <button onClick={() => handleDeleteProduct(product._id)}
+                                    className='bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600'
+                                    >
                                     Delete
                                 </button>
                             </td>
                         </tr>
                     ))
                     ) : (
-                    <tr></tr>
+                    <tr>
+                        <td colSpan={4} className='p-4 text-center text-gray-500'>
+                            No Products found.
+                        </td>
+                    </tr>
                     )}
                 </tbody>
             </table>
