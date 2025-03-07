@@ -5,6 +5,8 @@ const streamifier = require("streamifier");
 
 require("dotenv").config();
 
+const router = express.Router();
+
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
   api_key: process.env.CLOUDINARY_API_KEY,
@@ -22,9 +24,20 @@ router.post("/", upload.single("image"), async (req, res) => {
       return new Promise((relsove, reject) => {
         const stream = cloudinary.uploader.upload_stream((error, result) => {
           if (result) {
+            relsove(result);
+          } else {
+            reject(error);
           }
         });
+        streamifier.createReadStream(fillBuffer).pipe(stream);
       });
     };
-  } catch (error) {}
+    const result = await streamUpload(req.file.buffer);
+    res.json({ imageUrl: result.secure_url });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server Error" });
+  }
 });
+
+module.exports = router;
