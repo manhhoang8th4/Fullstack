@@ -9,23 +9,27 @@ export const fetchUsers = createAsyncThunk("admin/fetchUsers", async () => {
       headers: { Authorization: `Bearer ${localStorage.getItem("userToken")}` },
     }
   );
-  return response.data;
+  response.data;
 });
 
 //add the create user action
 export const addUser = createAsyncThunk(
   "admin/addUser",
   async (userData, { rejectWithValue }) => {
-    const response = await axios.post(
-      `${import.meta.env.VITE_BACKEND_URL}/api/admin/users`,
-      {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("userToken")}`,
-          userData,
-        },
-      }
-    );
-    return response.data;
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_BACKEND_URL}/api/admin/users`,
+        userData,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("userToken")}`,
+          },
+        }
+      );
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
   }
 );
 

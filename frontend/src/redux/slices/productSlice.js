@@ -38,7 +38,7 @@ export const fetchProductsByFilters = createAsyncThunk(
   }
 );
 
-export const fetchProductsDetails = createAsyncThunk(
+export const fetchProductDetails = createAsyncThunk(
   "products/fecthProductDetails",
   async (id) => {
     const response = await axios.get(
@@ -131,15 +131,15 @@ const productsSlice = createSlice({
         state.error - action.error.message;
       })
       //handle fetching single product details
-      .addCase(fetchProductsDetails.pending, (state) => {
+      .addCase(fetchProductDetails.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(fetchProductsDetails.fulfilled, (state, action) => {
+      .addCase(fetchProductDetails.fulfilled, (state, action) => {
         state.loading = false;
         state.selectedProduct = action.payload;
       })
-      .addCase(fetchProductsDetails.rejected, (state, action) => {
+      .addCase(fetchProductDetails.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       })
