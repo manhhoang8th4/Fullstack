@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const { collection } = require("./User");
 
 const productSchema = new mongoose.Schema(
   {
@@ -102,7 +101,7 @@ const productSchema = new mongoose.Schema(
       width: Number,
       height: Number,
     },
-    weigth: Number,
+    weight: Number,
   },
   { timestamps: true }
 );

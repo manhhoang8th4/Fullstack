@@ -3,11 +3,11 @@ import Hero from "../components/Layout/Hero";
 import { GenderCollectionSection } from "../components/Products/GenderCollectionSection";
 import NewArrivals from "../components/Products/NewArrivals";
 import ProductDetails from "../components/Products/ProductDetails";
-import { ProductGrid } from "../components/Products/ProductGrid";
+import ProductGrid from "../components/Products/ProductGrid";
 import FeaturedCollection from "../components/Products/FeaturedCollection";
 import FearturesSection from "../components/Products/FeaturesSection";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProductsByFilters } from "../redux/slices/productSlice";
+import { fetchProductsByFilters } from "../redux/slices/productsSlice";
 import axios from "axios";
 
 const Home = () => {

@@ -102,10 +102,10 @@ router.put("/:id", protect, admin, async (req, res) => {
       product.isFeatured =
         isFeatured !== undefined ? isFeatured : product.isFeatured;
       product.isPublished =
-        isPublished !== undefined ? isFeatured : product.isPublished;
+        isPublished !== undefined ? isPublished : product.isPublished;
       product.tags = tags || product.tags;
       product.dimensions = dimensions || product.dimensions;
-      product.weigth = weight || product.weigth;
+      product.weight = weight || product.weight;
       product.sku = sku || product.sku;
 
       const updatedProduct = await product.save();
@@ -167,13 +167,13 @@ router.get("/", async (req, res) => {
       query.brand = { $in: brand.split(",") };
     }
     if (size) {
-      query.size = { $in: size.split(",") };
+      query.sizes = { $in: size.split(",") };
     }
     if (color) {
-      query.color = { $in: [color] };
+      query.colors = { $in: [color] };
     }
     if (gender) {
-      query.gender - gender;
+      query.gender = gender;
     }
     if (minPrice || maxPrice) {
       query.price = {};
@@ -182,10 +182,12 @@ router.get("/", async (req, res) => {
     }
     if (search) {
       query.$or = [
-        { name: { $regex: search, $option: "i" } },
-        { description: { $regex: search, $option: "i" } },
+        { name: { $regex: search, $options: "i" } },
+        { description: { $regex: search, $options: "i" } },
       ];
     }
+
+    //sort logic
     let sort = {};
     if (sortBy) {
       switch (sortBy) {
@@ -196,7 +198,7 @@ router.get("/", async (req, res) => {
           sort = { price: -1 };
           break;
         case "popularity":
-          sort = { price: -1 };
+          sort = { rating: -1 };
           break;
         default:
           break;
