@@ -9,7 +9,7 @@ const selectedProduct = {
     brand:"FashionBrand",
     material:"Leather",
     sizes:["S", "M", "L", "XL"],
-    color:["Red", "Black"],
+    colors:["Red", "Black"],
     images:[
         {
             url:"https://picsum.photos/500/500?random=1",
@@ -112,7 +112,7 @@ const ProductDetails = () => {
             {/* Main Image */}
             <div className="md:w-1/2">
                 <div className='mb-4'>
-                    <img src={mainImage} alt="Main Product" 
+                    <img src={selectedProduct.images[0]?.url} alt="Main Product" 
                     className='w-full h-auto object-cover rounded-lg'
                     />
                 </div>
@@ -140,7 +140,7 @@ const ProductDetails = () => {
                         {selectedProduct.originalPrice && `${selectedProduct.originalPrice}`}
                     </p>
                     <p className="text-xl text-gray-500 mb-2">
-                        ${selectedProduct.name}
+                        ${selectedProduct.price}
                     </p>
                     <p className="text-gray-600 mb-4">
                         {selectedProduct.description}
@@ -148,12 +148,12 @@ const ProductDetails = () => {
                     <div className="mb-4">
                         <p className="text-gray-700">Color:</p>
                         <div className="flex gap-2 mt-2">
-                            {selectedProduct.color.map((color) => (
+                            {selectedProduct.colors.map((color) => (
                                 <button 
                                     key={color}
                                     onClick={() => setSelectedColor(color)} 
                                     className={`w-8 h-8 rounded-full border ${selectedColor === color ? "border-4 border-black" :" border-gray-300"}`}
-                                    style={{backgroundColor:color.toLocaleLowerCase(), filter:"bright(0.5)"}}
+                                    style={{backgroundColor:color.toLocaleLowerCase(), filter:"brightness(0.5)"}}
                                     ></button>
                             ))}
                         </div>
@@ -164,7 +164,8 @@ const ProductDetails = () => {
                             {selectedProduct.sizes.map((size) => (
                                 <button key={size} 
                                     onClick={() => setSelectedSize(size)}
-                                    className={`px-4 py-2 rounded border ${selectedSize === size ? "bg-black text-white" : ""}`}>
+                                    className={`px-4 py-2 rounded border ${selectedSize === size ? "bg-black text-white" : ""}`}
+                                >
                                     {size}
                                 </button>
                             ))}
@@ -205,7 +206,7 @@ const ProductDetails = () => {
                                     <td className='py-1'>{selectedProduct.brand}</td>
                                 </tr>
                                 <tr>
-                                    <td className='py-1'>Brand</td>
+                                    <td className='py-1'>Material</td>
                                     <td className='py-1'>{selectedProduct.material}</td>
                                 </tr>
                             </tbody>
